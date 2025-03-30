@@ -1,0 +1,145 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Quiz
+{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sporta Viktorīna</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            padding: 20px;
+        }
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .jautajums {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 25px;
+            color: #3498db;
+        }
+        .atbilde-btn {
+            margin: 10px 0;
+            text-align: left;
+            padding: 12px 20px;
+        }
+        .rezultats {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .pareizi {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        .nepareizi {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        :root {
+            --primary: #3498db;
+            --success: #2ecc71;
+            --danger: #e74c3c;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .quiz-container:hover {
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .question-img {
+            max-height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .question-img:hover {
+            transform: scale(1.02);
+        }
+        
+        .progress {
+            height: 10px;
+            margin-bottom: 25px;
+            border-radius: 5px;
+        }
+        
+        .progress-bar {
+            background-color: var(--primary);
+            transition: width 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Sporta Viktorīna</h1>
+        
+        {% if rezultats %}
+            <div class="rezultats {% if 'Pareizi' in rezultats %}pareizi{% else %}nepareizi{% endif %}">
+                {{ rezultats }}
+            </div>
+            
+            <form method="GET" action="{{ url_for('quiz') }}">
+                <button type="submit" class="btn btn-primary btn-lg w-100">
+                    Nākamais jautājums
+                </button>
+            </form>
+        {% else %}
+            <div class="jautajums">{{ jautajums }}</div>
+            
+            <form method="POST" action="{{ url_for('quiz') }}">
+                <input type="hidden" name="pareiza_atbilde" value="{{ pareiza_atbilde }}">
+                
+                {% for atbilde in atbildes %}
+                    <button type="submit" name="atbilde" value="{{ atbilde }}" 
+                            class="btn btn-outline-secondary atbilde-btn w-100">
+                        {{ atbilde }}
+                    </button>
+                {% endfor %}
+            </form>
+        {% endif %}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+{% endblock %}

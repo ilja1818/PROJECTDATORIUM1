@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Stadiums
+{% endblock %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stadioni ASV</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #ee8c65;
+            color: white;
+            font-size: 16px;
+        }
+        td {
+            font-size: 14px;
+            color: #555;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+        .container {
+            width: 90%;
+            margin: 0 auto;
+        }
+        .table-wrapper {
+            overflow-x: auto;
+        }
+        .info {
+            font-size: 14px;
+            color: #888;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Stadioni ASV</h1>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Stadiona Nosaukums</th>
+                        <th>Atrašanās Vieta</th>
+                        <th>Vietu Skaits</th>
+                        <th>Atklāts</th>
+                        <th>Komanda</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for stadium in stadiums.itertuples() %}
+                        <tr>
+                            <td>{{ stadium.name }}</td>
+                            <td>{{ stadium.location }}</td>
+                            <td>{{ stadium.capacity }}</td>
+                            <td>{{ stadium.year_opened }}</td>
+                            <td>{{ stadium.team }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="info">
+            <p>Šī ir tikai neliela izvēle no ASV stadionu lielajiem skaitļiem. Dati tiek atjaunināti katru dienu.</p>
+        </div>
+    </div>
+
+</body>
+</html>
+{% endblock %}

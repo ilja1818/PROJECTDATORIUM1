@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>{% block title %}{% endblock %}</title>
+</head>
+<body>
+    <div class="wrapper">
+      <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+        <div class="col-md-3 mb-2 mb-md-0">
+          <a href="/" class="d-inline-flex link-body-emphasis text-decoration-none">
+            <img class="header__img" src="{{ url_for('static', filename='img/121a7fa9-7a18-464c-8940-fbc329a1b1f21.webp') }}" alt="law">
+          </a>
+        </div>
+  
+        <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+          <li><a href="{{ url_for('home') }}" class="nav-link px-2">Home</a></li>
+          <li><a href="{{ url_for('stadiums') }}"  class="nav-link px-2">Stadiums</a></li>
+          <li><a href="{{ url_for('popularity') }}" class="nav-link px-2">Popularity</a></li>
+          <li><a href="{{ url_for('activity') }}" class="nav-link px-2">Activity</a></li>
+          <li><a href="{{ url_for('statistics') }}" class="nav-link px-2">Statistics</a></li>
+          <li><a href="{{ url_for('cssfile') }}" class="nav-link px-2">Uploud CSS</a></li>
+          <li><a href="{{ url_for('quiz') }}" class="nav-link px-2">Quiz</a></li>
+        </ul>
+  
+        <div class="col-md-3 text-end">
+          {% if 'user_id' in session %}
+          <div class="d-flex gap-2">
+              <a href="{{ url_for('profile') }}" class="btn btn-outline-primary">
+                  <i class="bi bi-person-circle"></i> Mans profils
+              </a>
+              <a href="{{ url_for('logout') }}" class="btn btn-outline-danger">
+                  <i class="bi bi-box-arrow-right"></i> Izrakstīties
+              </a>
+          </div>
+      {% else %}
+          <div class="d-flex gap-2">
+              <a href="{{ url_for('login') }}" class="btn btn-outline-primary">
+                  <i class="bi bi-box-arrow-in-right"></i> Pieteikties
+              </a>
+              <a href="{{ url_for('register') }}" class="btn btn-primary">
+                  <i class="bi bi-person-plus"></i> Reģistrēties
+              </a>
+          </div>
+      {% endif %}
+        </div>
+      </header>
+      <div class="main">
+        {% block content %}{% endblock %}
+      </div>
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <p class="col-md-4 mb-0 text-body-secondary">© 2025 Sport site</p>
+    
+        <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <img class="header__img" src="{{ url_for('static', filename='img/121a7fa9-7a18-464c-8940-fbc329a1b1f21.webp') }}" alt="law">
+        </a>
+    
+        <ul class="nav col-md-4 justify-content-end">
+          <li class="nav-item"><a href="home" class="nav-link px-2">Home</a></li>
+          <li class="nav-item"><a href="stadiums" class="nav-link px-2">Stadiums</a></li>
+          <li class="nav-item"><a href="popularity" class="nav-link px-2">Popularity</a></li>
+          <li class="nav-item"><a href="activity" class="nav-link px-2">Activity</a></li>
+          <li class="nav-item"><a href="statistics" class="nav-link px-2">Statistics</a></li>
+          <li class="nav-item"><a href="cssfile" class="nav-link px-2">Uploud CSS</a></li>
+          <li class="nav-item"><a href="quiz" class="nav-link px-2">Quiz</a></li>
+        </ul>
+      </footer>
+    </div>
+</body>
+</html>

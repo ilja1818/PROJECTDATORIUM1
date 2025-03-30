@@ -1,0 +1,79 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Main page
+{% endblock %}
+
+{% block content %}
+<section class="hero-banner py-5 mb-5" style="background-color: #1e3a8a;">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12 text-center">
+                <h1 class="display-3 fw-bold text-white mb-4 animate__animated animate__fadeInDown">Sporta Pasaule</h1>
+                <p class="lead text-white mb-4 animate__animated animate__fadeIn animate__delay-1s">
+                    Atklāj aizraujošo sporta pasauli ar mūsu interaktīvajiem rīkiem un unikālu saturu
+                </p>
+                <div class="d-flex gap-3 justify-content-center animate__animated animate__fadeIn animate__delay-2s">
+                    <a href="{{ url_for('activity') }}" class="btn btn-light btn-lg px-4">
+                        <i class="bi bi-graph-up me-2"></i>Statistika
+                    </a>
+                    <a href="{{ url_for('quiz') }}" class="btn btn-outline-light btn-lg px-4">
+                        <i class="bi bi-trophy me-2"></i>Viktorīna
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 mb-5">
+    <div class="container">
+        <h2 class="text-center mb-5 display-4 fw-bold">Vai tu zināji?</h2>
+        
+        <div class="row g-4 fact-cards">
+            <!-- Факт 1 -->
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm hover-effect">
+                    <div class="card-body text-center p-4">
+                        <div class="fact-icon mb-3">
+                            <i class="bi bi-lightning text-warning" style="font-size: 2rem;"></i>
+                        </div>
+                        <h3 class="h4">Ātrākais metiens</h3>
+                        <p class="mb-0">
+                            Hokeja ripas ātrums var sasniegt līdz 180 km/h! NHL rekords ir 177.5 km/h, ko 2012. gadā sasniedza Zdeno Chara. Hokejs - komandu sporta veids, ko spēlē uz ledus.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm hover-effect">
+                    <div class="card-body text-center p-4">
+                        <div class="fact-icon mb-3">
+                            <i class="bi bi-stopwatch text-primary" style="font-size: 2rem;"></i>
+                        </div>
+                        <h3 class="h4">Sports</h3>
+                        <p class="mb-0">
+                            Sports ir fiziska aktivitāte, kas ietver sacensības un treniņus, lai uzlabotu veselību un attīstītu prasmes. Sporta priekšrocības: Uzlabo fizisko sagatavotību un izturību; Stiprina sirdi un imunitāti; Uzlabo garastāvokli un mazina stresu; Attīsta disciplīnu un komandas garu
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card h-100 border-0 shadow-sm hover-effect">
+                    <div class="card-body text-center p-4">
+                        <div class="fact-icon mb-3">
+                            <i class="bi bi-people-fill text-success" style="font-size: 2rem;"></i>
+                        </div>
+                        <h3 class="h4">Populārākais sports</h3>
+                        <p class="mb-0">
+                            Futbols ir populārākais sports pasaulē. Aptuveni 4 miljardi cilvēku seko futbola notikumiem. Futbols ir komandu sporta veids, kura mērķis ir iemest bumbu pretinieka vārtos ar kājām vai citām ķermeņa daļām (izņemot rokas) vairāk reižu nekā pretinieka komandai.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
